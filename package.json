@@ -12,10 +12,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dydxprotocol/v4-clients.git"
+    "url": "git+https://github.com/decentdao/decent-types.git"
   },
-  "author": "dYdX Trading Inc.",
-  "license": "AGPL-3.0",
+  "author": "Decent Labs",
   "devDependencies": {
     "@eslint/js": "^9.22.0",
     "eslint": "^8.57.1",
