@@ -1,7 +1,9 @@
+import { Address } from "viem";
+import { Optional } from "./Common";
 import { IVote } from "./Vote";
 
 export interface IProposalAction {
-  address: string;
+  address: Address;
 }
 
 export type TransferAction = IProposalAction & {
@@ -21,15 +23,19 @@ export type ContractAction = IProposalAction & {
 };
 
 export interface IProposal {
-  title?: string; // title and description are from DB if proposal is in draft.
-  description?: string;
-  cid?: string; // cid to metadata with data (title and/or description and/or others)
-  proposalId?: number; // BigInt?
-  votes?: IVote[]; // vote records
+  proposer: Address; // address of the proposer
+  title: Optional<string>; // title and description are from DB if proposal is in draft.
+  description: Optional<string>;
+  cid: Optional<string>; // cid to metadata with data (title and/or description and/or others)
+  votingStrategy: Address;
+  startDatetime: Optional<Date>;
+  endDatetime: Optional<Date>;
+  proposalId: Optional<number>; // BigInt?
+  votes: Optional<IVote[]>; // vote records
 }
 
 export type ProposalTransaction = {
-  actions?: IProposalAction[];
+  actions: Optional<IProposalAction[]>;
 };
 
 export type YesNoProposal = IProposal & {

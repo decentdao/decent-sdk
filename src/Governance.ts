@@ -1,24 +1,24 @@
-export enum TokenType {
-  ERC20 = "ERC20",
-  ERC721 = "ERC721",
-  ERC1155 = "ERC1155",
-}
+import { Address } from "viem";
+import { Optional } from "./Common";
+import { TokenType } from "./Token";
 
 export type TokenWeight = {
   type: TokenType;
-  address?: string;
+  address: Optional<Address>;
   weightPerToken: number; // default to 1. DAO creation can set up different ratio
 };
 
 export type ProposalPermission = {
   threshold: number; // voting weight
-  whitelist?: string[]; // Hats token IDs
+  whitelist: Optional<Address[]>; // Hats token IDs
 };
 
 export type VotingStrategy = {
-  address: string; // string enum
+  address: string; // string
+  masterAddress: string;
+  version: Optional<number>;
   tokenWeight: TokenWeight[];
-  votingWeight?: string; // calculation contract address, f(x) = 1 * x right now
+  votingWeightCalculatorAddress?: Optional<Address>; // calculation contract address, f(x) = 1 * x right now
   proposalPermissions: ProposalPermission;
 };
 
@@ -30,24 +30,24 @@ export type GovernanceSettings = {
 };
 
 export type Governance = {
-  address: string; // module address
+  address: Address; // module address
   settings: GovernanceSettings;
   strategies: VotingStrategy[];
 };
 
 export type Fractal = {
-  address?: string;
-  constrollers?: string[];
+  address?: Optional<Address>;
+  constrollers?: Optional<Address[]>; // list of controller addresses
   // contains owners, normally just the parent DAO
 };
 
 export type FreezeVoting = {
-  address: string;
+  address: Address;
   frozen: boolean;
 };
 
 export type Guard = {
-  address: string;
-  freezeVoting?: FreezeVoting;
+  address: Address;
+  freezeVoting?: Optional<FreezeVoting>;
   settings: GovernanceSettings; // look into this
 };
