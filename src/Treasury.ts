@@ -1,13 +1,14 @@
+import { Optional } from "./Common";
+
 export type TokenBlance = {
   tokenAddress: string;
   balance: number;
-  balanceFormatted: string;
   usdValue: number;
-  portfolioPercentage: number;
+  portfolioPercentage: Optional<number>;
 };
 
 export type Treasury = {
   totalUsdValue: number;
-  fungible: TokenBlance[];
-  nonFungible: TokenBlance[];
+  fungible: TokenBlance[]; // ERC20
+  nonFungible: TokenBlance[]; // ERC721, ERC1155
 };

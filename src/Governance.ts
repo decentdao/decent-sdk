@@ -18,7 +18,7 @@ export type VotingStrategy = {
   masterAddress: string;
   version: Optional<number>;
   tokenWeight: TokenWeight[];
-  votingWeightCalculatorAddress?: Optional<Address>; // calculation contract address, f(x) = 1 * x right now
+  votingWeightCalculatorAddress: Optional<Address>; // calculation contract address, f(x) = 1 * x right now
   proposalPermissions: ProposalPermission;
 };
 
@@ -29,7 +29,7 @@ export type GovernanceSettings = {
   executionPeriod: number; // in second
 };
 
-export type Governance = {
+export type GovernanceModule = {
   address: Address; // module address
   settings: GovernanceSettings;
   strategies: VotingStrategy[];

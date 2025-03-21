@@ -17,5 +17,5 @@ export interface IToken {
   decimals: number;
   verifiedContract: boolean;
   nativeToken: boolean;
-  usePrice: Optional<number>;
+  tokenPrice: Optional<number>;
 }
