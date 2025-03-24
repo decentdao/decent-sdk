@@ -36,6 +36,7 @@ cid stored JSON
 */
 
 export interface IProposal {
+  id: Optional<string>; // id in the DB
   proposer: Address; // address of the proposer
   title: Optional<string>; // title and description are from DB if proposal is in draft.
   description: Optional<string>;

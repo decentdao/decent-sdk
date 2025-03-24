@@ -1,3 +1,5 @@
+import { Optional } from "./Common";
+
 export type PaymentStream = {
   start: Date;
   end: Date;
