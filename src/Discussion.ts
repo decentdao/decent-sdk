@@ -2,6 +2,8 @@ export interface IComment {
   id: string;
   text: string;
   createAt: Date;
+  thumbsUp: number;
+  thumbsDown: number;
 }
 
 export type Thread = IComment & {

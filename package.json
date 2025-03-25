@@ -27,6 +27,7 @@
     "typescript-eslint": "^8.26.1"
   },
   "dependencies": {
+    "firebase": "^11.5.0",
     "lint": "^0.8.19"
   }
 }

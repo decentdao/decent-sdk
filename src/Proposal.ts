@@ -63,8 +63,12 @@ export interface YesNoVoteResult {
 }
 
 export type YesNoProposal = IProposal & {
+  thumbsUp: number; // from Web2
+  thumbsDown: number;
+  thumbsUpWeighted: number;
+  thumbsDownWeighted: number;
   tx: ProposalTransaction;
-  result: YesNoVoteResult;
+  result: Optional<YesNoVoteResult>;
 };
 
 /*
