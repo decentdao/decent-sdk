@@ -1,6 +1,6 @@
-import { Address } from "viem";
-import { PaymentStream } from "./PaymentStream";
-import { Optional } from "./Common";
+import { Address } from 'viem';
+import { Optional } from './Common';
+import { PaymentStream } from './PaymentStream';
 
 export type Role = {
   cid: string; // cid to metadata with data (title and/or description and/or others)

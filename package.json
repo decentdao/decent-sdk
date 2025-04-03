@@ -2,32 +2,31 @@
   "name": "decent-types",
   "version": "0.1.0",
   "description": "Shared types between Decent backend and frontend",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
   "scripts": {
     "lint": "eslint . --fix",
     "lint:check": "eslint .",
-    "pretty": "prettier . --write",
-    "pretty:check": "prettier . --check",
-    "build": "rm -rf build/ && npm run compile",
-    "compile": "tsc"
+    "build": "rm -rf dist && tsc",
+    "typecheck": "tsc --noEmit"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/decentdao/decent-types.git"
+  "peerDependencies": {
+    "viem": "^2.26.3"
   },
-  "author": "Decent Labs",
+  "peerDependenciesMeta": {
+    "viem": {
+      "optional": true
+    }
+  },
   "devDependencies": {
-    "@eslint/js": "^9.22.0",
-    "eslint": "^8.57.1",
-    "eslint-config-airbnb-typescript": "^18.0.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-import": "^2.29.1",
+    "@eslint/js": "^9.24.0",
+    "@stylistic/eslint-plugin": "^4.2.0",
+    "eslint": "^9.24.0",
     "globals": "^16.0.0",
-    "prettier": "^3.3.3",
-    "typescript": "^5.8.2",
-    "typescript-eslint": "^8.26.1"
-  },
-  "dependencies": {
-    "firebase": "^11.5.0",
-    "lint": "^0.8.19"
+    "typescript": "^5.0.0",
+    "typescript-eslint": "^8.29.1",
+    "viem": "^2.26.3"
   }
 }
