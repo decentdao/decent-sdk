@@ -10,3 +10,12 @@ export type Comment = {
   createdAt: number;
   updatedAt: Optional<number>;
 }
+
+export type NewComment = {
+  replyToId: Optional<string>;
+  content: string;
+}
+
+export type UpdateComment = {
+  content: string;
+}
