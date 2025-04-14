@@ -42,3 +42,8 @@ export type Nonce = {
 };
 
 export type Logout = string;
+
+export type VerifySiwe = {
+  message: string;
+  signature: string;
+}
