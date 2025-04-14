@@ -1,11 +1,12 @@
 import { Address } from 'viem';
+import { Optional } from './Common';
 
 export type Comment = {
   id: string;
-  replyToId: string;
+  replyToId: Optional<string>;
   proposalSlug: string;
   authorAddress: Address;
   content: string;
   createdAt: number;
-  updatedAt: number;
+  updatedAt: Optional<number>;
 }
