@@ -23,6 +23,7 @@ export type Dao = {
   governanceModules: Optional<GovernanceModule[]>; // null if Multi-sig
   guardAddress: Address; // for subDAO, Freeze, parent DAO vote on FreezeVoting
   fractalModuleAddress: Optional<Address>; // for subDAO only, parent DAO can force child DAO to make a transaction
+  hatIdToStreamId: Optional<Record<string, string>>;
   parent: Optional<Address>;
   children: Optional<Address[]>;
   gastank: Optional<GasTank>;
