@@ -14,6 +14,11 @@ export type GovernanceCycle = {
   days: number; // Days
 };
 
+export type HatStream = {
+  hatId: string;
+  streamId: string;
+};
+
 export type Dao = {
   chainId: SupportedChainId;
   address: Address;
@@ -23,7 +28,7 @@ export type Dao = {
   governanceModules: Optional<GovernanceModule[]>; // null if Multi-sig
   guardAddress: Address; // for subDAO, Freeze, parent DAO vote on FreezeVoting
   fractalModuleAddress: Optional<Address>; // for subDAO only, parent DAO can force child DAO to make a transaction
-  hatIdToStreamIds: Optional<Record<string, string>>;
+  hatIdToStreamIds: Optional<HatStream[]>;
   parent: Optional<Address>;
   children: Optional<Address[]>;
   gastank: Optional<GasTank>;
