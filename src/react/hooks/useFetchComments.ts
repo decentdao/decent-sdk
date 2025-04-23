@@ -1,0 +1,38 @@
+import { useContext } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { SupportedChainId } from '../../core/types/Chains';
+import { Comment } from '../../core/types/Discussion';
+import { Address } from '../../core/types/Api';
+import { getAllComments } from '../../core/fetch/comment';
+import { QueryReturn } from '../types';
+import { DecentApiContext } from '../contexts/DecentApiContext';
+
+type UseFetchCommentsParams = {
+  chainId?: SupportedChainId;
+  address?: Address;
+  slug?: string;
+};
+
+/**
+ * React hook to fetch all comments for a specific proposal.
+ *
+ * @param params - Parameters to fetch comments, including chainId, address, slug.
+ *                 The hook will only fetch if chainId, address, and slug are provided.
+ * @returns {QueryReturn<Comment[]>} Object with { data: Comment[], loading: boolean, error: Error | null }
+ */
+export const useFetchComments = (params: UseFetchCommentsParams): QueryReturn<Comment[]> => {
+  const { chainId, address, slug } = params;
+  const { apiUrl } = useContext(DecentApiContext);
+  const shouldFetch = !!(chainId && address && slug);
+  if (!shouldFetch) {
+    return { data: [], isLoading: false, error: null };
+  }
+  const { data, error, isLoading } = useQuery({
+    queryKey: ['comments', chainId, address, slug, apiUrl],
+    queryFn: () => getAllComments({ chainId: chainId!, address: address!, slug: slug!, apiUrl }),
+    enabled: shouldFetch,
+    initialData: [],
+  });
+
+  return { data, isLoading, error };
+};

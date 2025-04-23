@@ -1,6 +1,5 @@
 import {
   mainnet,
-  sepolia,
   base,
   optimism,
   polygon,
@@ -8,7 +7,6 @@ import {
 
 export const SUPPORTED_CHAIN_IDS = [
   mainnet.id,
-  sepolia.id,
   base.id,
   optimism.id,
   polygon.id,

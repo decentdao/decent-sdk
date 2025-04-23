@@ -1,5 +1,8 @@
 import { Address } from 'viem';
 
+// Re-export Address type
+export type { Address };
+
 export type ApiResponse<T = unknown> = {
   success: boolean;
   data?: T;
