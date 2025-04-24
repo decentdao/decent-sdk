@@ -1,4 +1,4 @@
-import { Address } from 'viem';
+import { Address } from './Common';
 
 // Re-export Address type
 export type { Address };

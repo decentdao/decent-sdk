@@ -1,7 +1,7 @@
-import { Optional } from './Common';
+import { Optional, Address } from './Common';
 
 export type TokenBlance = {
-  tokenAddress: string;
+  tokenAddress: Address;
   balance: number;
   usdValue: number;
   portfolioPercentage: Optional<number>;

@@ -1,5 +1,4 @@
-import { Address } from 'viem';
-import { Optional } from './Common';
+import { Address, Optional } from './Common';
 import { Vote } from './Vote';
 
 export type Action = {

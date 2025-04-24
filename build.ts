@@ -4,7 +4,7 @@ import { readdir, stat } from 'fs/promises';
 
 console.log('🔨 Building decent-sdk...');
 
-const external = ['react', 'react-dom', 'viem', '@tanstack/react-query'];
+const external = ['react', 'react-dom', '@tanstack/react-query'];
 
 // Clean dist directory
 console.log('Cleaning dist directory...');

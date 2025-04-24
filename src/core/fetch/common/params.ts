@@ -1,4 +1,4 @@
-import { Address } from 'viem';
+import { Address } from '../../types/Common';
 import { SupportedChainId } from '../../types/Chains';
 import { NewComment, UpdateComment } from '../../types/Discussion';
 import { NewProposal, UpdateProposal } from '../../types/Proposal';

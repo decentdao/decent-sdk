@@ -1,5 +1,4 @@
-import { Address } from 'viem';
-import { Optional } from './Common';
+import { Optional, Address } from './Common';
 
 export type Comment = {
   id: string;

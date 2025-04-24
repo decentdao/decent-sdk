@@ -1,6 +1,5 @@
-import { Address } from 'viem';
+import { Address, Optional } from './Common';
 import { GovernanceModule } from './Governance';
-import { Optional } from './Common';
 import { Safe } from './Safe';
 import { SupportedChainId } from './Chains';
 

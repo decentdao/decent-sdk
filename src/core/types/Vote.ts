@@ -1,4 +1,4 @@
-import { Address } from 'viem';
+import { Address } from './Common';
 
 export type Vote = {
   address: Address;
