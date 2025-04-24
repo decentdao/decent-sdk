@@ -1,5 +1,4 @@
-import { useContext } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useContext, useQuery } from './imports';
 import { SupportedChainId } from '../../core/types/Chains';
 import { Proposal } from '../../core/types/Proposal';
 import { Address } from '../../core/types/Api';

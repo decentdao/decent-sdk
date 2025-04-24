@@ -1,5 +1,4 @@
-import { useContext } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useContext, useQuery } from './imports';
 import { Dao } from '../../core/types/Dao';
 import { Address } from '../../core/types/Api';
 import { SupportedChainId } from '../../core/types/Chains';
@@ -16,7 +15,7 @@ type UseFetchDaoParams = {
  * React hook to fetch a specific DAO.
  *
  * @param {UseFetchDaoParams} params - Object containing chainId and address
- * @param {SupportedChainId} params.chainId - The chain ID of the blockchain
+ * @param {SupportedChainId} params.chainId - The EIP155 chain ID
  * @param {Address} params.address - The contract address of the DAO
  * @returns {QueryReturn<Dao>} Object with { data: Dao, isLoading: boolean, error: Error | null }
  */

@@ -1,5 +1,4 @@
-import { useContext } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useContext, useQuery } from './imports';
 import { Permissions, Address } from '../../core/types/Api';
 import { SupportedChainId } from '../../core/types/Chains';
 import { getDaoPermissions } from '../../core/fetch/dao';

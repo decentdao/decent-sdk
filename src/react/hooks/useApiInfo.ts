@@ -1,5 +1,4 @@
-import { useContext } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useContext, useQuery } from './imports';
 import { Meta } from '../../core/types/Api';
 import { apiInfo } from '../../core/fetch/meta';
 import { QueryReturn } from '../types';
