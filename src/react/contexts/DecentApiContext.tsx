@@ -10,7 +10,7 @@ export const DecentApiContext = createContext<DecentApiContextData>({
 });
 
 export function DecentApiProvider(
-  { apiUrl, children }: PropsWithChildren<DecentApiContextData>
+  { apiUrl = DEFAULT_API_URL, children }: PropsWithChildren<Partial<DecentApiContextData>>
 ) {
   return (
     <DecentApiContext.Provider value={{ apiUrl }}>

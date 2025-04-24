@@ -15,9 +15,10 @@ type UseFetchProposalsParams = {
 /**
  * React hook to fetch all proposals for a specific DAO.
  *
- * @param params - Parameters to fetch proposals, including chainId, address, apiUrl and shouldFetch.
- *                 The hook will only fetch if both chainId and address are provided and shouldFetch is true.
- * @returns {QueryReturn<Proposal[]>} Object with { data: Proposal[], loading: boolean, error: Error | null }
+ * @param {UseFetchProposalsParams} params - Object containing chainId and address.
+ * @param {SupportedChainId} params.chainId - The EIP155 chain ID
+ * @param {Address} params.address - The contract address of the DAO
+ * @returns {QueryReturn<Proposal[]>} Object with { data: Proposal[], isLoading: boolean, error: Error | null }
  */
 export const useFetchProposals = (params: UseFetchProposalsParams): QueryReturn<Proposal[]> => {
   const { chainId, address } = params;

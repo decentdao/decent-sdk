@@ -15,9 +15,10 @@ type UseFetchDaoParams = {
 /**
  * React hook to fetch a specific DAO.
  *
- * @param params - Parameters to fetch the DAO, including chainId, address.
- *                 The hook will only fetch if both chainId and address are provided.
- * @returns {QueryReturn<Dao>} Object with { data: Dao, loading: boolean, error: Error | null }
+ * @param {UseFetchDaoParams} params - Object containing chainId and address
+ * @param {SupportedChainId} params.chainId - The chain ID of the blockchain
+ * @param {Address} params.address - The contract address of the DAO
+ * @returns {QueryReturn<Dao>} Object with { data: Dao, isLoading: boolean, error: Error | null }
  */
 export const useFetchDao = (params: UseFetchDaoParams): QueryReturn<Dao> => {
   const { chainId, address } = params;

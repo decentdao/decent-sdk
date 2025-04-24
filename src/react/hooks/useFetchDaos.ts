@@ -13,8 +13,9 @@ type UseFetchDaosParams = {
 /**
  * React hook to fetch all DAOs.
  *
- * @param params - Optional parameters to filter DAOs, including chainId, apiUrl and shouldFetch.
- * @returns {QueryReturn<Dao[]>} Object with { data: Dao[], loading: boolean, error: Error | null }
+ * @param {UseFetchDaosParams} params - Optional parameters to filter DAOs by chainId.
+ * @param {SupportedChainId} params.chainId - The EIP155 chain ID
+ * @returns {QueryReturn<Dao[]>} Object with { data: Dao[], isLoading: boolean, error: Error | null }
  */
 export const useFetchDaos = (params?: UseFetchDaosParams): QueryReturn<Dao[]> => {
   const { chainId } = params ?? {};

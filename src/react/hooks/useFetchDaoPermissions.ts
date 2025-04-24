@@ -14,9 +14,10 @@ type UseFetchDaoPermissionsParams = {
 /**
  * React hook to fetch permissions for the current user within a specific DAO.
  *
- * @param params - Parameters to fetch DAO permissions, including chainId, address.
- *                 The hook will only fetch if both chainId and address are provided.
- * @returns {QueryReturn<Permissions>} Object with { data: Permissions, loading: boolean, error: Error | null }
+ * @param {UseFetchDaoPermissionsParams} params - Object containing chainId and address
+ * @param {SupportedChainId} params.chainId - The EIP155 chain ID
+ * @param {Address} params.address - The contract address of the DAO
+ * @returns {QueryReturn<Permissions>} Object with { data: Permissions, isLoading: boolean, error: Error | null }
  */
 export const useFetchDaoPermissions = (params: UseFetchDaoPermissionsParams): QueryReturn<Permissions> => {
   const { chainId, address } = params;

@@ -12,7 +12,7 @@ type UseFetchMeResult = QueryReturn<User> & {
 /**
  * React hook to fetch the currently authenticated user.
  *
- * @returns {UseFetchMeResult} Object with { data: User, loading: boolean, error: Error | null, refetch: Function }
+ * @returns {UseFetchMeResult} Object with { data: User, isLoading: boolean, error: Error | null, refetch: Function }
  */
 export const useFetchMe = (): UseFetchMeResult => {
   const { apiUrl } = useContext(DecentApiContext);

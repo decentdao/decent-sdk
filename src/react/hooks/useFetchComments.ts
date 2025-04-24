@@ -16,9 +16,11 @@ type UseFetchCommentsParams = {
 /**
  * React hook to fetch all comments for a specific proposal.
  *
- * @param params - Parameters to fetch comments, including chainId, address, slug.
- *                 The hook will only fetch if chainId, address, and slug are provided.
- * @returns {QueryReturn<Comment[]>} Object with { data: Comment[], loading: boolean, error: Error | null }
+ * @param {UseFetchCommentsParams} params - Object containing chainId, address, and slug.
+ * @param {SupportedChainId} params.chainId - The EIP155 chain ID
+ * @param {Address} params.address - The contract address of the proposal
+ * @param {string} params.slug - Unique identifier for the specific proposal
+ * @returns {QueryReturn<Comment[]>} Object with { data: Comment[], isLoading: boolean, error: Error | null }
  */
 export const useFetchComments = (params: UseFetchCommentsParams): QueryReturn<Comment[]> => {
   const { chainId, address, slug } = params;

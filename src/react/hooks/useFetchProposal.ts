@@ -16,9 +16,11 @@ type UseFetchProposalParams = {
 /**
  * React hook to fetch a specific proposal by its slug.
  *
- * @param params - Parameters to fetch the proposal, including chainId, address, slug.
- *                 The hook will only fetch if chainId, address, and slug are provided.
- * @returns {QueryReturn<Proposal>} Object with { data: Proposal, loading: boolean, error: Error | null }
+ * @param {UseFetchProposalParams} params - Object containing chainId, address, and slug.
+ * @param {SupportedChainId} params.chainId - The chain ID of the blockchain
+ * @param {Address} params.address - The contract address of the proposal
+ * @param {string} params.slug - Unique identifier for the specific proposal
+ * @returns {QueryReturn<Proposal>} Object with { data: Proposal, isLoading: boolean, error: Error | null }
  */
 export const useFetchProposal = (params: UseFetchProposalParams): QueryReturn<Proposal> => {
   const { chainId, address, slug } = params;

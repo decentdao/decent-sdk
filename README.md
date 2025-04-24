@@ -10,31 +10,31 @@ npm install decent-sdk
 
 ## Usage
 
-### Core API (Works in Node.js and browsers)
+### Core API
 
 ```typescript
 // Import core functions
 import { getDao, getAllDaos } from 'decent-sdk';
 
 // Use core functions
-const fetchDao = async () => {
-  const dao = await getDao({ 
-    chainId: 8453, 
-    address: '0x1234...' 
-  });
-  console.log(dao);
-};
+const dao = await getDao({ 
+  chainId: 8453, 
+  address: '0x1234...' 
+});
+
+const baseDaos = await getAllDaos({
+  chainId: 8453,
+});
 ```
 
 ### React Hooks
 
 ```typescript
 // Import React hooks
-import { useFetchDao, useFetchDaos } from 'decent-sdk/react';
-import { DecentApiProvider } from 'decent-sdk/react';
+import { DecentApiProvider, useFetchDao, useFetchDaos } from 'decent-sdk/react';
 
 // Wrap your app with the provider
-<DecentApiProvider apiUrl="https://api.decent.xyz">
+<DecentApiProvider> // optional apiUrl prop can be passed here
   <DaoComponent />
 </DecentApiProvider>
 
