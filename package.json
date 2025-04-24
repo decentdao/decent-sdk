@@ -19,8 +19,8 @@
   "peerDependencies": {
     "react": ">=18.0.0",
     "react-dom": ">=18.0.0",
-    "viem": "^2.26.3",
-    "@tanstack/react-query": "^5.74.4"
+    "viem": ">=2.0.0",
+    "@tanstack/react-query": ">=5.0.0"
   },
   "exports": {
     ".": {
