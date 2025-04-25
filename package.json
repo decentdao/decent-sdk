@@ -1,6 +1,6 @@
 {
   "name": "decent-sdk",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "./dist/cjs/core/index.js",
   "module": "./dist/esm/core/index.js",
   "devDependencies": {
@@ -58,7 +58,9 @@
   "types": "./dist/esm/core/index.d.ts",
   "typesVersions": {
     "*": {
-      "react": ["./dist/esm/react/index.d.ts"]
+      "react": [
+        "./dist/esm/react/index.d.ts"
+      ]
     }
   }
 }
