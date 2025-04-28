@@ -1,5 +1,6 @@
 import { useContext, useQuery } from './imports';
-import { Permissions, Address } from '../../core/types/Api';
+import { Permissions } from '../../core/types/Api';
+import { Address } from '../../core/types/Common';
 import { SupportedChainId } from '../../core/types/Chains';
 import { getDaoPermissions } from '../../core/fetch/dao';
 import { QueryReturn } from '../types';

@@ -1,7 +1,4 @@
-import { Address } from './Common';
-
-// Re-export Address type
-export type { Address };
+import { Address, Hex } from './Common';
 
 export type ApiResponse<T = unknown> = {
   success: boolean;
@@ -48,5 +45,5 @@ export type Logout = string;
 
 export type VerifySiwe = {
   message: string;
-  signature: string;
+  signature: Hex;
 }

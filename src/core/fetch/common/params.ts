@@ -1,4 +1,4 @@
-import { Address } from '../../types/Common';
+import { Address, Hex } from '../../types/Common';
 import { SupportedChainId } from '../../types/Chains';
 import { NewComment, UpdateComment } from '../../types/Discussion';
 import { NewProposal, UpdateProposal } from '../../types/Proposal';
@@ -9,9 +9,9 @@ export type BaseParams = {
 };
 
 // Auth
-export type VerifyParams = {
-  address: Address;
-  signature: string;
+export type VerifySiweParams = {
+  message: string;
+  signature: Hex;
   apiUrl?: string;
 };
 

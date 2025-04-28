@@ -1,7 +1,7 @@
 import { useContext, useQuery } from './imports';
 import { SupportedChainId } from '../../core/types/Chains';
 import { Proposal } from '../../core/types/Proposal';
-import { Address } from '../../core/types/Api';
+import { Address } from '../../core/types/Common';
 import { getProposal } from '../../core/fetch/proposal';
 import { QueryReturn } from '../types';
 import { DecentApiContext } from '../contexts/DecentApiContext';

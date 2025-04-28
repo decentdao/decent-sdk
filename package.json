@@ -1,8 +1,22 @@
 {
   "name": "decent-sdk",
-  "version": "0.1.1",
+  "version": "0.1.6",
+  "description": "SDK for the Decent API",
   "main": "./dist/cjs/core/index.js",
   "module": "./dist/esm/core/index.js",
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "lint": "eslint . --fix",
+    "lint:check": "eslint .",
+    "build": "rm -rf dist && bun build.ts",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "author": "DecentDAO",
   "devDependencies": {
     "@eslint/js": "^9.24.0",
     "@stylistic/eslint-plugin": "^4.2.0",
@@ -34,7 +48,6 @@
       "default": "./dist/esm/react/index.js"
     }
   },
-  "description": "SDK for the Decent API",
   "peerDependenciesMeta": {
     "react": {
       "optional": true
@@ -46,15 +59,7 @@
       "optional": true
     }
   },
-  "scripts": {
-    "lint": "eslint . --fix",
-    "lint:check": "eslint .",
-    "build": "rm -rf dist && bun build.ts",
-    "typecheck": "tsc --noEmit",
-    "prepublishOnly": "npm run build"
-  },
   "sideEffects": false,
-  "type": "module",
   "types": "./dist/esm/core/index.d.ts",
   "typesVersions": {
     "*": {
@@ -62,5 +67,15 @@
         "./dist/esm/react/index.d.ts"
       ]
     }
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/decentdao/decent-sdk.git"
+  },
+  "homepage": "https://decentdao.org",
+  "license": "MIT",
+  "keywords": [
+    "decent",
+    "decentdao"
+  ]
 }

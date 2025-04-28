@@ -1,6 +1,6 @@
 import { useContext, useQuery } from './imports';
 import { Dao } from '../../core/types/Dao';
-import { Address } from '../../core/types/Api';
+import { Address } from '../../core/types/Common';
 import { SupportedChainId } from '../../core/types/Chains';
 import { getDao } from '../../core/fetch/dao';
 import { QueryReturn } from '../types';

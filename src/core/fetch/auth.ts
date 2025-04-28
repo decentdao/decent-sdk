@@ -1,38 +1,38 @@
 import { Logout, Nonce, User } from '../types/Api';
 import { genericFetchAndThrowIfError } from './common/generic';
-import { BaseParams, VerifyParams } from './common/params';
+import { BaseParams, VerifySiweParams } from './common/params';
 import { routes } from './common/routes';
 
 /**
  * Fetches a nonce for signing messages.
  * @param params - The parameters for fetching the nonce.
  * @param params.apiUrl - Optional API URL override.
- * @returns {Promise<Nonce>} A promise that resolves to the nonce data.
+ * @returns {Promise<string>} A promise that resolves to a nonce string.
  */
-export const getNonce = async (params?: BaseParams): Promise<Nonce> => {
+export const getNonce = async (params?: BaseParams): Promise<string> => {
   const { apiUrl } = params ?? {};
   const response = await genericFetchAndThrowIfError<Nonce>({
     route: `${routes.auth}/nonce`,
     apiUrl,
   });
-  return response;
+  return response.nonce;
 };
 
 /**
  * Verifies a signed message (e.g., SIWE) to authenticate the user.
  * @param params - The parameters for verification.
- * @param params.address - The address of the user.
+ * @param params.message - The message to verify.
  * @param params.signature - The signature to verify.
  * @param params.apiUrl - Optional API URL override.
  * @returns {Promise<User>} A promise with the authenticated user data.
  */
-export const verify = async (params: VerifyParams): Promise<User> => {
-  const { address, signature, apiUrl } = params;
+export const verify = async (params: VerifySiweParams): Promise<User> => {
+  const { message, signature, apiUrl } = params;
   const response = await genericFetchAndThrowIfError<User>({
     route: `${routes.auth}/verify`,
     options: {
       method: 'POST',
-      body: JSON.stringify({ address, signature }),
+      body: JSON.stringify({ message, signature }),
     },
     apiUrl,
   });

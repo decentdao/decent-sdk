@@ -1,7 +1,7 @@
 import { useContext, useQuery } from './imports';
 import { SupportedChainId } from '../../core/types/Chains';
 import { Comment } from '../../core/types/Discussion';
-import { Address } from '../../core/types/Api';
+import { Address } from '../../core/types/Common';
 import { getAllComments } from '../../core/fetch/comment';
 import { QueryReturn } from '../types';
 import { DecentApiContext } from '../contexts/DecentApiContext';
