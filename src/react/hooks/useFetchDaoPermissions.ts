@@ -6,7 +6,7 @@ import { getDaoPermissions } from '../../core/fetch/dao';
 import { QueryReturn } from '../types';
 import { DecentApiContext } from '../contexts/DecentApiContext';
 
-type UseFetchDaoPermissionsParams = {
+type FetchDaoPermissionsParams = {
   chainId?: SupportedChainId;
   address?: Address;
 };
@@ -14,12 +14,12 @@ type UseFetchDaoPermissionsParams = {
 /**
  * React hook to fetch permissions for the current user within a specific DAO.
  *
- * @param {UseFetchDaoPermissionsParams} params - Object containing chainId and address
+ * @param {FetchDaoPermissionsParams} params - Object containing chainId and address
  * @param {SupportedChainId} params.chainId - The EIP155 chain ID
  * @param {Address} params.address - The contract address of the DAO
  * @returns {QueryReturn<Permissions>} Object with { data: Permissions, isLoading: boolean, error: Error | null }
  */
-export const useFetchDaoPermissions = (params: UseFetchDaoPermissionsParams): QueryReturn<Permissions> => {
+export const useFetchDaoPermissions = (params: FetchDaoPermissionsParams): QueryReturn<Permissions> => {
   const { chainId, address } = params;
   const { apiUrl } = useContext(DecentApiContext);
   const shouldFetch = !!(chainId && address);
@@ -30,7 +30,7 @@ export const useFetchDaoPermissions = (params: UseFetchDaoPermissionsParams): Qu
   const { data, error, isLoading } = useQuery({
     queryKey: ['daoPermissions', chainId, address, apiUrl],
     queryFn: async () => {
-      const user = await getDaoPermissions({ chainId: chainId!, address: address!, apiUrl });
+      const user = await getDaoPermissions({ chainId, address, apiUrl });
       return user.permissions as Permissions;
     },
     enabled: shouldFetch,

@@ -4,16 +4,16 @@ import { me } from '../../core/fetch/auth';
 import { QueryReturn } from '../types';
 import { DecentApiContext } from '../contexts/DecentApiContext';
 
-type UseFetchMeResult = QueryReturn<User> & {
+type FetchMeResult = QueryReturn<User> & {
   refetch: () => Promise<User | undefined>;
 };
 
 /**
  * React hook to fetch the currently authenticated user.
  *
- * @returns {UseFetchMeResult} Object with { data: User, isLoading: boolean, error: Error | null, refetch: Function }
+ * @returns {FetchMeResult} Object with { data: User, isLoading: boolean, error: Error | null, refetch: Function }
  */
-export const useFetchMe = (): UseFetchMeResult => {
+export const useFetchMe = (): FetchMeResult => {
   const { apiUrl } = useContext(DecentApiContext);
 
   const shouldFetch = !!apiUrl;

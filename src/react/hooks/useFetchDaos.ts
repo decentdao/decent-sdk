@@ -5,18 +5,18 @@ import { getAllDaos } from '../../core/fetch/dao';
 import { QueryReturn } from '../types';
 import { DecentApiContext } from '../contexts/DecentApiContext';
 
-type UseFetchDaosParams = {
+type FetchDaosParams = {
   chainId?: SupportedChainId;
 };
 
 /**
  * React hook to fetch all DAOs.
  *
- * @param {UseFetchDaosParams} params - Optional parameters to filter DAOs by chainId.
+ * @param {FetchDaosParams} params - Optional parameters to filter DAOs by chainId.
  * @param {SupportedChainId} params.chainId - The EIP155 chain ID
  * @returns {QueryReturn<Dao[]>} Object with { data: Dao[], isLoading: boolean, error: Error | null }
  */
-export const useFetchDaos = (params?: UseFetchDaosParams): QueryReturn<Dao[]> => {
+export const useFetchDaos = (params?: FetchDaosParams): QueryReturn<Dao[]> => {
   const { chainId } = params ?? {};
   const { apiUrl } = useContext(DecentApiContext);
 

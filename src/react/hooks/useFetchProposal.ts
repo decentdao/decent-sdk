@@ -6,7 +6,7 @@ import { getProposal } from '../../core/fetch/proposal';
 import { QueryReturn } from '../types';
 import { DecentApiContext } from '../contexts/DecentApiContext';
 
-type UseFetchProposalParams = {
+type FetchProposalParams = {
   chainId?: SupportedChainId;
   address?: Address;
   slug?: string;
@@ -15,13 +15,13 @@ type UseFetchProposalParams = {
 /**
  * React hook to fetch a specific proposal by its slug.
  *
- * @param {UseFetchProposalParams} params - Object containing chainId, address, and slug.
+ * @param {FetchProposalParams} params - Object containing chainId, address, and slug.
  * @param {SupportedChainId} params.chainId - The chain ID of the blockchain
  * @param {Address} params.address - The contract address of the proposal
  * @param {string} params.slug - Unique identifier for the specific proposal
  * @returns {QueryReturn<Proposal>} Object with { data: Proposal, isLoading: boolean, error: Error | null }
  */
-export const useFetchProposal = (params: UseFetchProposalParams): QueryReturn<Proposal> => {
+export const useFetchProposal = (params: FetchProposalParams): QueryReturn<Proposal> => {
   const { chainId, address, slug } = params;
   const { apiUrl } = useContext(DecentApiContext);
 
@@ -32,7 +32,7 @@ export const useFetchProposal = (params: UseFetchProposalParams): QueryReturn<Pr
 
   const { data, error, isLoading } = useQuery({
     queryKey: ['proposal', chainId, address, slug, apiUrl],
-    queryFn: () => getProposal({ chainId: chainId!, address: address!, slug: slug!, apiUrl }),
+    queryFn: () => getProposal({ chainId, address, slug, apiUrl }),
     enabled: shouldFetch,
     initialData: {} as Proposal,
   });

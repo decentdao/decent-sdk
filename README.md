@@ -34,7 +34,8 @@ const baseDaos = await getAllDaos({
 import { DecentApiProvider, useFetchDao, useFetchDaos } from 'decent-sdk/react';
 
 // Wrap your app with the provider
-<DecentApiProvider> // optional apiUrl prop can be passed here
+<DecentApiProvider>
+// <DecentApiProvider apiUrl={"http://localhost:3005"}> // optional apiUrl prop can be passed here
   <DaoComponent />
 </DecentApiProvider>
 

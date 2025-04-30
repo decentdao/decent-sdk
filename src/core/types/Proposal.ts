@@ -42,6 +42,7 @@ export type Proposal = {
   metadataCID: Optional<string>; // cid to metadata with data (title and/or description and/or others)
   id: Optional<number>; // number to concat with organization prefix (ex: DCT-1)
   safeNonce: Optional<number>; // nonce for this proposal
+  proposedTxHash: Optional<string>; // txn hash of the proposed safe tx
   executedTxHash: Optional<string>; // txn hash of the executed safe tx
   votingStrategyAddress: Optional<Address>;
   voteStartsAt: Optional<number>; // timestamp, if onchain, voteStartsAt and voteEndsAt should have value

@@ -6,7 +6,7 @@ import { getDao } from '../../core/fetch/dao';
 import { QueryReturn } from '../types';
 import { DecentApiContext } from '../contexts/DecentApiContext';
 
-type UseFetchDaoParams = {
+type FetchDaoParams = {
   chainId?: SupportedChainId;
   address?: Address;
 };
@@ -14,12 +14,12 @@ type UseFetchDaoParams = {
 /**
  * React hook to fetch a specific DAO.
  *
- * @param {UseFetchDaoParams} params - Object containing chainId and address
+ * @param {FetchDaoParams} params - Object containing chainId and address
  * @param {SupportedChainId} params.chainId - The EIP155 chain ID
  * @param {Address} params.address - The contract address of the DAO
  * @returns {QueryReturn<Dao>} Object with { data: Dao, isLoading: boolean, error: Error | null }
  */
-export const useFetchDao = (params: UseFetchDaoParams): QueryReturn<Dao> => {
+export const useFetchDao = (params: FetchDaoParams): QueryReturn<Dao> => {
   const { chainId, address } = params;
   const { apiUrl } = useContext(DecentApiContext);
 
@@ -30,7 +30,7 @@ export const useFetchDao = (params: UseFetchDaoParams): QueryReturn<Dao> => {
 
   const { data, error, isLoading } = useQuery({
     queryKey: ['dao', chainId, address, apiUrl],
-    queryFn: () => getDao({ chainId: chainId!, address: address!, apiUrl }),
+    queryFn: () => getDao({ chainId, address, apiUrl }),
     enabled: shouldFetch,
     initialData: {} as Dao,
   });

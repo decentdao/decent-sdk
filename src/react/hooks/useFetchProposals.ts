@@ -6,7 +6,7 @@ import { getAllProposals } from '../../core/fetch/proposal';
 import { QueryReturn } from '../types';
 import { DecentApiContext } from '../contexts/DecentApiContext';
 
-type UseFetchProposalsParams = {
+type FetchProposalsParams = {
   chainId?: SupportedChainId;
   address?: Address;
 }
@@ -14,12 +14,12 @@ type UseFetchProposalsParams = {
 /**
  * React hook to fetch all proposals for a specific DAO.
  *
- * @param {UseFetchProposalsParams} params - Object containing chainId and address.
+ * @param {FetchProposalsParams} params - Object containing chainId and address.
  * @param {SupportedChainId} params.chainId - The EIP155 chain ID
  * @param {Address} params.address - The contract address of the DAO
  * @returns {QueryReturn<Proposal[]>} Object with { data: Proposal[], isLoading: boolean, error: Error | null }
  */
-export const useFetchProposals = (params: UseFetchProposalsParams): QueryReturn<Proposal[]> => {
+export const useFetchProposals = (params: FetchProposalsParams): QueryReturn<Proposal[]> => {
   const { chainId, address } = params;
   const { apiUrl } = useContext(DecentApiContext);
 
@@ -30,7 +30,7 @@ export const useFetchProposals = (params: UseFetchProposalsParams): QueryReturn<
 
   const { data, error, isLoading } = useQuery({
     queryKey: ['proposals', chainId, address, apiUrl],
-    queryFn: () => getAllProposals({ chainId: chainId!, address: address!, apiUrl }),
+    queryFn: () => getAllProposals({ chainId, address, apiUrl }),
     enabled: shouldFetch,
     initialData: [],
   });
