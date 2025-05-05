@@ -1,6 +1,6 @@
 {
   "name": "decent-sdk",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "SDK for the Decent API",
   "main": "./dist/cjs/core/index.js",
   "module": "./dist/esm/core/index.js",
