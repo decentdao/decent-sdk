@@ -38,6 +38,7 @@ export type User = {
 };
 
 export type Nonce = {
+  sessionId: string;
   nonce: string;
 };
 
