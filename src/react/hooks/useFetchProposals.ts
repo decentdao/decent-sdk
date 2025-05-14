@@ -3,13 +3,16 @@ import { SupportedChainId } from '../../core/types/Chains';
 import { Proposal } from '../../core/types/Proposal';
 import { Address } from '../../core/types/Common';
 import { getAllProposals } from '../../core/fetch/proposal';
-import { QueryReturn } from '../types';
+import { QueryReturn, TanstackQueryOptions } from '../types';
 import { DecentApiContext } from '../contexts/DecentApiContext';
+import { skipToken } from '@tanstack/react-query';
 
-type FetchProposalsParams = {
+type FetchProposalsOptions = {
   chainId?: SupportedChainId;
   address?: Address;
 }
+
+type FetchProposalsParams = FetchProposalsOptions & TanstackQueryOptions;
 
 /**
  * React hook to fetch all proposals for a specific DAO.
@@ -20,18 +23,14 @@ type FetchProposalsParams = {
  * @returns {QueryReturn<Proposal[]>} Object with { data: Proposal[], isLoading: boolean, error: Error | null }
  */
 export const useFetchProposals = (params: FetchProposalsParams): QueryReturn<Proposal[]> => {
-  const { chainId, address } = params;
+  const { chainId, address, enabled } = params;
   const { apiUrl } = useContext(DecentApiContext);
 
-  const shouldFetch = !!(chainId && address);
-  if (!shouldFetch) {
-    return { data: [], isLoading: false, error: null };
-  }
+  const shouldFetch = !!(chainId && address) && enabled;
 
   const { data, error, isLoading } = useQuery({
     queryKey: ['proposals', chainId, address, apiUrl],
-    queryFn: () => getAllProposals({ chainId, address, apiUrl }),
-    enabled: shouldFetch,
+    queryFn: shouldFetch ? () => getAllProposals({ chainId, address, apiUrl }) : skipToken,
     initialData: [],
   });
 

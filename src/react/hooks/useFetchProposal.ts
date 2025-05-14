@@ -3,14 +3,17 @@ import { SupportedChainId } from '../../core/types/Chains';
 import { Proposal } from '../../core/types/Proposal';
 import { Address } from '../../core/types/Common';
 import { getProposal } from '../../core/fetch/proposal';
-import { QueryReturn } from '../types';
+import { QueryReturn, TanstackQueryOptions } from '../types';
 import { DecentApiContext } from '../contexts/DecentApiContext';
+import { skipToken } from '@tanstack/react-query';
 
-type FetchProposalParams = {
+type FetchProposalOptions = {
   chainId?: SupportedChainId;
   address?: Address;
   slug?: string;
 };
+
+type FetchProposalParams = FetchProposalOptions & TanstackQueryOptions;
 
 /**
  * React hook to fetch a specific proposal by its slug.
@@ -22,18 +25,14 @@ type FetchProposalParams = {
  * @returns {QueryReturn<Proposal>} Object with { data: Proposal, isLoading: boolean, error: Error | null }
  */
 export const useFetchProposal = (params: FetchProposalParams): QueryReturn<Proposal> => {
-  const { chainId, address, slug } = params;
+  const { chainId, address, slug, enabled } = params;
   const { apiUrl } = useContext(DecentApiContext);
 
-  const shouldFetch = !!(chainId && address && slug);
-  if (!shouldFetch) {
-    return { data: {} as Proposal, isLoading: false, error: null };
-  }
+  const shouldFetch = !!(chainId && address && slug) && enabled;
 
   const { data, error, isLoading } = useQuery({
     queryKey: ['proposal', chainId, address, slug, apiUrl],
-    queryFn: () => getProposal({ chainId, address, slug, apiUrl }),
-    enabled: shouldFetch,
+    queryFn: shouldFetch ? () => getProposal({ chainId, address, slug, apiUrl }) : skipToken,
     initialData: {} as Proposal,
   });
 
