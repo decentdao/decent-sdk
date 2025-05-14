@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'bun:test';
-import { getNonce, verify } from '../../src/core/fetch/auth';
+import { getNonce } from '../../src/core/fetch/auth';
 import { apiUrl } from '../constants';
 
 describe('Auth', () => {

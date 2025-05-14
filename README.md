@@ -17,9 +17,9 @@ npm install decent-sdk
 import { getDao, getAllDaos } from 'decent-sdk';
 
 // Use core functions
-const dao = await getDao({ 
-  chainId: 8453, 
-  address: '0x1234...' 
+const dao = await getDao({
+  chainId: 8453,
+  address: '0x1234...',
 });
 
 const baseDaos = await getAllDaos({
@@ -48,7 +48,7 @@ function DaoComponent() {
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
-  
+
   return (
     <div>
       <h1>{dao?.name}</h1>
@@ -65,8 +65,9 @@ function DaoComponent() {
 bun install
 
 # Build the SDK
-bun build
+bun run build
 
 # Run tests
+#  requirement: configure decent-offchain locally.
 bun test
 ```
