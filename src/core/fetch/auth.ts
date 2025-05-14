@@ -1,7 +1,10 @@
-import { Logout, Nonce, User } from '../types/Api';
-import { genericFetchAndThrowIfError } from './common/generic';
-import { BaseParams, VerifySiweParams } from './common/params';
-import { routes } from './common/routes';
+import { Logout, Nonce, User } from "../types/Api";
+import {
+  genericFetchAndThrowIfError,
+  SessionIdKeyInLocalStorage,
+} from "./common/generic";
+import { BaseParams, VerifySiweParams } from "./common/params";
+import { routes } from "./common/routes";
 
 /**
  * Fetches a nonce for signing messages.
@@ -15,6 +18,7 @@ export const getNonce = async (params?: BaseParams): Promise<string> => {
     route: `${routes.auth}/nonce`,
     apiUrl,
   });
+  localStorage.setItem(SessionIdKeyInLocalStorage, response.sessionId);
   return response.nonce;
 };
 
@@ -31,7 +35,7 @@ export const verify = async (params: VerifySiweParams): Promise<User> => {
   const response = await genericFetchAndThrowIfError<User>({
     route: `${routes.auth}/verify`,
     options: {
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify({ message, signature }),
     },
     apiUrl,
@@ -66,7 +70,7 @@ export const logout = async (params?: BaseParams): Promise<Logout> => {
   const response = await genericFetchAndThrowIfError<Logout>({
     route: `${routes.auth}/logout`,
     options: {
-      method: 'POST',
+      method: "POST",
     },
     apiUrl,
   });
