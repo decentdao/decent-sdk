@@ -19,20 +19,20 @@ export const genericFetchAndThrowIfError = async <T>(
   const { route, options = {}, apiUrl = DEFAULT_API_URL } = params;
   const sessionId = localStorage.getItem(SessionIdKeyInLocalStorage);
   const defaultOptions: RequestInit = {
-    credentials: "include",
+    credentials: 'include',
     ...options,
     headers: {
       ...(sessionId ? { Authorization: `Bearer ${sessionId}` } : {}),
       ...options.headers,
     },
   };
-  const url = `${apiUrl}${route ? `/${route}` : ""}`;
+  const url = `${apiUrl}${route ? `/${route}` : ''}`;
   const response = await fetch(url, defaultOptions);
 
   const json = (await response.json()) as ApiResponse<T>;
 
   if (!json.success) {
-    throw new Error(json.error?.message || "Unknown API error");
+    throw new Error(json.error?.message || 'Unknown API error');
   }
 
   return json.data as T;

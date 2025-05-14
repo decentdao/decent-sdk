@@ -35,7 +35,7 @@ export const verify = async (params: VerifySiweParams): Promise<User> => {
   const response = await genericFetchAndThrowIfError<User>({
     route: `${routes.auth}/verify`,
     options: {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify({ message, signature }),
     },
     apiUrl,
@@ -70,7 +70,7 @@ export const logout = async (params?: BaseParams): Promise<Logout> => {
   const response = await genericFetchAndThrowIfError<Logout>({
     route: `${routes.auth}/logout`,
     options: {
-      method: "POST",
+      method: 'POST',
     },
     apiUrl,
   });

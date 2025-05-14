@@ -14,12 +14,12 @@ npm install decent-sdk
 
 ```typescript
 // Import core functions
-import { getDao, getAllDaos } from "decent-sdk";
+import { getDao, getAllDaos } from 'decent-sdk';
 
 // Use core functions
 const dao = await getDao({
   chainId: 8453,
-  address: "0x1234...",
+  address: '0x1234...',
 });
 
 const baseDaos = await getAllDaos({
