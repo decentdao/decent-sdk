@@ -1,10 +1,10 @@
-import { Logout, Nonce, User } from "../types/Api";
+import { Logout, Nonce, User } from '../types/Api';
 import {
   genericFetchAndThrowIfError,
   SessionIdKeyInLocalStorage,
-} from "./common/generic";
-import { BaseParams, VerifySiweParams } from "./common/params";
-import { routes } from "./common/routes";
+} from './common/generic';
+import { BaseParams, VerifySiweParams } from './common/params';
+import { routes } from './common/routes';
 
 /**
  * Fetches a nonce for signing messages.

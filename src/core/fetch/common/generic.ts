@@ -1,8 +1,8 @@
-import { ApiResponse } from "../../types/Api";
-import { DEFAULT_API_URL } from "./constants";
-import { GenericFetchParams } from "./params";
+import { ApiResponse } from '../../types/Api';
+import { DEFAULT_API_URL } from './constants';
+import { GenericFetchParams } from './params';
 
-export const SessionIdKeyInLocalStorage = "decent-sessionId";
+export const SessionIdKeyInLocalStorage = 'decent-sessionId';
 
 /**
  * Generic fetch function that handles API calls and error checking.
