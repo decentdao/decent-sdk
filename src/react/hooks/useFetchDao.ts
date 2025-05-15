@@ -3,13 +3,16 @@ import { Dao } from '../../core/types/Dao';
 import { Address } from '../../core/types/Common';
 import { SupportedChainId } from '../../core/types/Chains';
 import { getDao } from '../../core/fetch/dao';
-import { QueryReturn } from '../types';
+import { QueryReturn, TanstackQueryOptions } from '../types';
 import { DecentApiContext } from '../contexts/DecentApiContext';
+import { skipToken } from '@tanstack/react-query';
 
-type FetchDaoParams = {
+type FetchDaoOptions = {
   chainId?: SupportedChainId;
   address?: Address;
 };
+
+type FetchDaoParams = FetchDaoOptions & TanstackQueryOptions
 
 /**
  * React hook to fetch a specific DAO.
@@ -20,18 +23,14 @@ type FetchDaoParams = {
  * @returns {QueryReturn<Dao>} Object with { data: Dao, isLoading: boolean, error: Error | null }
  */
 export const useFetchDao = (params: FetchDaoParams): QueryReturn<Dao> => {
-  const { chainId, address } = params;
+  const { chainId, address, enabled } = params;
   const { apiUrl } = useContext(DecentApiContext);
 
-  const shouldFetch = !!(chainId && address);
-  if (!shouldFetch) {
-    return { data: {} as Dao, isLoading: false, error: null };
-  }
+  const shouldFetch = !!(chainId && address) && enabled;
 
   const { data, error, isLoading } = useQuery({
     queryKey: ['dao', chainId, address, apiUrl],
-    queryFn: () => getDao({ chainId, address, apiUrl }),
-    enabled: shouldFetch,
+    queryFn: shouldFetch ? () => getDao({ chainId, address, apiUrl }) : skipToken,
     initialData: {} as Dao,
   });
 

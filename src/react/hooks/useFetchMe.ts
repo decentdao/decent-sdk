@@ -1,8 +1,11 @@
 import { useContext, useQuery } from './imports';
 import { User } from '../../core/types/Api';
 import { me } from '../../core/fetch/auth';
-import { QueryReturn } from '../types';
+import { QueryReturn, TanstackQueryOptions } from '../types';
 import { DecentApiContext } from '../contexts/DecentApiContext';
+import { skipToken } from '@tanstack/react-query';
+
+type FetchMeParams = TanstackQueryOptions;
 
 type FetchMeResult = QueryReturn<User> & {
   refetch: () => Promise<User | undefined>;
@@ -13,18 +16,14 @@ type FetchMeResult = QueryReturn<User> & {
  *
  * @returns {FetchMeResult} Object with { data: User, isLoading: boolean, error: Error | null, refetch: Function }
  */
-export const useFetchMe = (): FetchMeResult => {
+export const useFetchMe = (params: FetchMeParams): FetchMeResult => {
   const { apiUrl } = useContext(DecentApiContext);
 
-  const shouldFetch = !!apiUrl;
-  if (!shouldFetch) {
-    return { data: {} as User, isLoading: false, error: null, refetch: async () => undefined };
-  }
+  const shouldFetch = !!apiUrl && params.enabled;
 
   const { data, error, isLoading, refetch: queryRefetch } = useQuery({
     queryKey: ['me', apiUrl],
-    queryFn: () => me({ apiUrl }),
-    enabled: shouldFetch,
+    queryFn: shouldFetch ? () => me({ apiUrl }) : skipToken,
     initialData: {} as User,
   });
 
